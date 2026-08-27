@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import GameCard from "../Components/GameCard";
+import GameForms from "../Components/GameForms";
 import { Link } from "react-router-dom";
 const GamePage = () => {
     const [games, setGames] = useState([]);
@@ -18,12 +19,18 @@ const GamePage = () => {
         <>
             <p>My Games</p>
             <Link to="/">Home</Link>
+            <GameForms onCreated={(g) => setGames(prev => [...prev, g])}/>
+
             <div id="game-cards">
             {games.map((game) => (
                 <GameCard
                 key={game.id}
+                id={game.id}
                 title={game.title}
-                genre={game.genre} />
+                genre={game.genre}
+                onDelete={(id) => setGames(prev => prev.filter(g => g.id !== id))}
+                 />
+
             ))}
             </div>
         </>

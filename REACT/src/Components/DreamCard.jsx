@@ -1,4 +1,10 @@
-const DreamCard = ({title,description, mood, dreamt_on}) => {
+const DreamCard = ({id, title,description, mood, dreamt_on, onDelete}) => {
+    async function handleDelete() {
+        const res = await fetch(`/api/dreams/${id}`, {
+            method: "DELETE"
+        }) 
+        if(res.ok) onDelete(id)
+    }
     return (
      <>
     <div id="dream-card">
@@ -6,6 +12,8 @@ const DreamCard = ({title,description, mood, dreamt_on}) => {
         <h3>Mood: {mood}</h3>
         <p>Date: {dreamt_on}</p>
         <p>Description: {description}</p>
+
+        <button onClick={handleDelete}>Delete</button>
     </div>
     
     </> );

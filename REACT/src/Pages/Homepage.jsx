@@ -17,6 +17,7 @@ const Homepage = () => {
         <Link to='/movies'>Movies</Link>
         <Link to='/games'>Games</Link>
         <Link to='/dreams'>Dreams</Link>
+        <Link to='/crud'>CRUD</Link>
        </nav>
         
 

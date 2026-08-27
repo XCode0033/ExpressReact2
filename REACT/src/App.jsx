@@ -3,7 +3,7 @@ import GamePage from './Pages/GamePage'
 import Homepage from './Pages/Homepage';
 import MoviePage from './Pages/MoviePage';
 import DreamPage from './Pages/DreamPage';
-
+import CrudPage from './Pages/CrudPage';
 const App = () => {
   return ( 
     <>
@@ -11,8 +11,10 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Homepage />} />
       <Route path="/games" element={<GamePage />} />
+
       <Route path='/movies' element={<MoviePage />} />
       <Route path='/dreams' element={<DreamPage />} />
+      <Route path='/crud' element={<CrudPage />} />
     </Routes>
     </>
 
