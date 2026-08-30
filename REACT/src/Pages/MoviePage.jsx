@@ -1,24 +1,15 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useContext } from "react";
+import { MovieContext } from "../Context/MovieContext";
 import MovieCard from "../Components/MovieCard";
 import MovieForm from "../Components/MovieForm";
 const MoviePage = () => {
-    const [movies, setMovies] = useState([])
-
-    useEffect(() => {
-            async function loadMovies() {
-                const res = await fetch('/api/movies');
-                const data = await res.json()
-
-                setMovies(data.movies)
-            }
-            loadMovies();
-        }, [])
+   
+   const { movies } = useContext(MovieContext);
+   
     return (
         <>
         <h1>My Movies</h1>
-
-        <MovieForm onCreated={(m) => setMovies(prev => [...prev, m])}/>
+        <MovieForm />
 
         <div id="movie-cards">
         {movies.map((movie) => (
@@ -28,7 +19,6 @@ const MoviePage = () => {
             title={movie.title}
             director={movie.director}
             year={movie.year}
-            onDelete={(id) => setMovies(prev => prev.filter(m => m.id !== id))}
             />
         ))}
 

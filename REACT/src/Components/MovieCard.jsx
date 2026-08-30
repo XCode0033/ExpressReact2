@@ -1,9 +1,13 @@
-const MovieCard = ({id, title, director, year, onDelete}) => {
+import { useContext } from "react";
+import { MovieContext } from "../Context/MovieContext";
+
+const MovieCard = ({id, title, director, year}) => {
+    const { removeMovie } = useContext(MovieContext)
     async function handleDelete() {
        const res = await fetch(`/api/movies/${id}`, {
         method: "DELETE"
        })
-       if(res.ok) onDelete(id)
+       if(res.ok) removeMovie(id)
     }
     return (  
         <>

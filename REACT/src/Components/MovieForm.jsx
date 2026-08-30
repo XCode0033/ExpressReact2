@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { MovieContext } from "../Context/MovieContext";
 
-const MovieForm = ({onCreated}) => {
+const MovieForm = () => {
+    const {addMovie} = useContext(MovieContext)
     const [form, setForm] = useState({title: '', director: '', year: ''})
 
     async function handleSubmit(e) {
@@ -14,7 +16,7 @@ const MovieForm = ({onCreated}) => {
             body: JSON.stringify(form)
         })
         const data = await res.json();
-        onCreated(data.movie)
+        addMovie(data.movie)
 
         setForm({title: '', director: '', year: '' })
     }

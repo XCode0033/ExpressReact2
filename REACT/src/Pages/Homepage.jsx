@@ -18,6 +18,8 @@ const Homepage = () => {
         <Link to='/games'>Games</Link>
         <Link to='/dreams'>Dreams</Link>
         <Link to='/crud'>CRUD</Link>
+        <Link to='/books'>Books</Link>
+        <a href="http://localhost:3000/api/auth/google">Sign in with Google</a>
        </nav>
         
 
