@@ -1,9 +1,9 @@
 import {Router} from 'express'
 import { getHomesController } from '../controllers/homeController.js';
-import { deleteGamesController, getGamesController, postGameController } from '../controllers/gamesController.js';
-import { deleteMoviesController, getMoviesController, postMoviesController } from '../controllers/moviesController.js';
-import { deleteDreamController, getDreamsController, postDreamController} from '../controllers/dreamsController.js';
-import { deleteBooks, getBooks, postBooks } from '../controllers/bookController.js';
+import { deleteGamesController, getGamesController, postGameController,findGameById } from '../controllers/gamesController.js';
+import { deleteMoviesController, getMoviesController, postMoviesController, findMovieById } from '../controllers/moviesController.js';
+import { deleteDreamController, getDreamsController, postDreamController, findDreamById} from '../controllers/dreamsController.js';
+import { deleteBooks, getBooks, getBookById, postBooks } from '../controllers/bookController.js';
 import { login, registerUser } from '../controllers/usersController.js';
 import {requireAuth} from '../middleware/verifyAuth.js'
 import passport from '../config/passport.js'
@@ -30,6 +30,13 @@ router.get('/auth/google/callback',
 router.get('/me', requireAuth, (req, res) => {
     res.json({user: req.user}) 
 })
+
+
+// ----------------
+router.get('/dreams/:id', findDreamById)
+router.get('/movies/:id', findMovieById)
+router.get('/books/:id', getBookById)
+router.get('/games/:id', findGameById)
 // ----------------
 
 router.post('/dreams', requireAuth, postDreamController)

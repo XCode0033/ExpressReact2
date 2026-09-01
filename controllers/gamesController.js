@@ -19,6 +19,13 @@ export const postGameController = async(req ,res ) => {
     res.status(200).json({game: result.rows[0]})
 }
 
+export const findGameById = async(req, res) => {
+    const { id } = req.params;
+    const result = await query(`SELECT * FROM games WHERE id = $1`, [id])
+    if(result.rowCount === 0) 'No game found by this id.'
+    res.status(200).json({game: result.rows[0]})
+}
+
 export const deleteGamesController = async(req, res) => {
     const { id } =  req.params
 

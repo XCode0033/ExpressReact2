@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const BookCard = ({id, title, author, year, genre, onDelete}) => {
     async function handleDelete() {
@@ -6,13 +7,14 @@ const BookCard = ({id, title, author, year, genre, onDelete}) => {
        })
        if(res.ok) onDelete(id)
     }
-    return ( 
+    return (
         <>
         <div>
         <h2>Title: {title}</h2>
         <h3>Author: {author}</h3>
         <p>Year: {year}</p>
         <p>Genre: {genre}</p>
+        <Link to={`/books/${id}`}>View</Link>
         <button onClick={handleDelete}>Delete</button>
         </div>
         </>

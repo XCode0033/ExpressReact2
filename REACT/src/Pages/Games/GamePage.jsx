@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import GameCard from "../Components/GameCard";
-import GameForms from "../Components/GameForms";
+import GameCard from "../../Components/Games/GameCard";
+import GameForms from "../../Components/Games/GameForms";
 import { Link } from "react-router-dom";
 const GamePage = () => {
     const [games, setGames] = useState([]);

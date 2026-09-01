@@ -9,6 +9,12 @@ export const getMoviesController = async(req, res) => {
         res.status(200).json({movies: result.rows})
 }
 
+export const findMovieById = async(req, res) => {
+const { id } = req.body;
+
+const result = await query(`SELECT * FROM movies WHERE id = $1`, [id])
+}
+
 export const postMoviesController = async(req, res) => {
     const { title, director, year } = req.body;
 

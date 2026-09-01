@@ -23,6 +23,8 @@ export function MoviesProvider({ children }) {
   function removeMovie(id){
     setMovies((prev) => prev.filter((m) => m.id !== id))
   }
+
+  
   return (
     <MovieContext.Provider value={{movies, addMovie, removeMovie}}>
       {children}

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { MovieContext } from "../Context/MovieContext";
+import { MovieContext } from "../../Context/MovieContext";
 
 const MovieCard = ({id, title, director, year}) => {
     const { removeMovie } = useContext(MovieContext)

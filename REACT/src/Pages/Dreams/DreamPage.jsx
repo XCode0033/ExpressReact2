@@ -1,5 +1,6 @@
-import DreamCard from "../Components/DreamCard";
-import DreamForm from "../Components/DreamForm";
+import DreamCard from "../../Components/Dreams/DreamCard";
+import DreamForm from "../../Components/Dreams/DreamForm";
+
 import {useState, useEffect} from 'react'
 const DreamPage = () => {
 
@@ -29,6 +30,7 @@ const DreamPage = () => {
                 dreamt_on={dream.dreamt_on}
                 description={dream.description}
                 onDelete={(id) => setDreams(prev => prev.filter(d => d.id !== id))}
+                
                 />
             ))}
 

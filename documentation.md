@@ -25,3 +25,19 @@ It's a friday morning, maybe maybe not try context. We'll see how it goes.
 ## To-Do
 1. add context to other pages
 2. Look at adding a 'list' so that context is better used. page reads it, form adds to it, card subtracts from it.
+
+# 08/31/26 - Monday
+## Completed
+1. added find by ID on all pages.
+
+## To-Do
+1. add edit
+2. Learn useRef
+
+### Future
+1. Refine
+2. Tailwind
+3. Native
+4. TypeScript :D
+5. Add auth to all other projects and maybe look at multi-oauth.
+6. Start planning out money tracker front and backend.

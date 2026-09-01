@@ -13,10 +13,17 @@ const BookForm = ({onCreated}) => {
 
         const res = await fetch('/api/books', {
             method: "POST",
-            headers: {"Content-Type" : "application/json"},
+            headers: {"Content-Type" : "application/json",
+                Authorization: `Bearer ${token}`,
+            },
             body: JSON.stringify(form)
         })
 
+        if(!res.ok){
+            const error = await res.json()
+            alert(error.error || 'COuld not add dream')
+            return;
+        }
         const data = await res.json()
 
         onCreated(data.book)

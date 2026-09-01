@@ -9,6 +9,21 @@ export const getBooks = async(req, res) => {
     res.status(200).json({books: result.rows})
 }
 
+export const getBookById = async(req, res) => {
+    const { id } = req.params
+
+    const result = await query(
+        `SELECT * FROM books WHERE id = $1`,
+        [id]
+    )
+
+    if (result.rows.length === 0) {
+        return res.status(404).json({ error: 'Book not found' })
+    }
+
+    res.status(200).json({ book: result.rows[0] })
+}
+
 export const postBooks = async(req, res) => {
     const {title, author, year, genre } = req.body
 
@@ -20,17 +35,20 @@ export const postBooks = async(req, res) => {
         `, [title, author, year, genre]
     )
 
-    res.status(200).json({book: result.rows[0]})
+    res.status(201).json({book: result.rows[0]})
 }
 
 export const deleteBooks = async(req, res) => {
     const {id} = req.params
 
-    const result = await query(`
-        DELETE FROM books WHERE id = $1
-        `, [id])
+    const result = await query(
+        `DELETE FROM books WHERE id = $1 RETURNING *`,
+        [id]
+    )
 
-    if(result.rowCount === 0) 'No book found for deletion.'
+    if(result.rowCount === 0) {
+        return res.status(404).json({ error: 'No book found for deletion.' })
+    }
 
     res.status(200).json({delete: result.rows[0]})
 }

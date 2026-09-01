@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
-import { MovieContext } from "../Context/MovieContext";
-
+import { MovieContext } from "../../Context/MovieContext";
+import { useParams } from 'react-router-dom'
 const MovieForm = () => {
     const {addMovie} = useContext(MovieContext)
     const [form, setForm] = useState({title: '', director: '', year: ''})
@@ -20,6 +20,8 @@ const MovieForm = () => {
 
         setForm({title: '', director: '', year: '' })
     }
+
+    
     return ( 
         <>
         <div>
