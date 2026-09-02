@@ -57,7 +57,7 @@ const BookCard = ({ id, title, author, year, genre, onDelete, onUpdate }) => {
       <p>Year: {year}</p>
       <p>Genre: {genre}</p>
       <Link to={`/books/${id}`}>View</Link>
-      <button onClick={handleDelete}>Delete</button>
+      <button onClick={handleDelete} className="border border-lightgray-400 ml-5 px-1">Delete</button>
     </div>
   );
 };

@@ -23,7 +23,7 @@ const BookPage = () => {
             <BookForm onCreated={(b) => setBooks(prev => [...prev, b])} />
 
             {books.map((book) => (
-                <BookCard
+                <BookCard 
                     key={book.id}
                     id={book.id}
                     title={book.title}

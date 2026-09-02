@@ -10,7 +10,7 @@ const BookForm = ({onCreated}) => {
 
     async function handleSubmit(e) {
         e.preventDefault();
-
+        const token = localStorage.getItem("token")
         const res = await fetch('/api/books', {
             method: "POST",
             headers: {"Content-Type" : "application/json",
@@ -38,29 +38,29 @@ const BookForm = ({onCreated}) => {
     return ( 
         <>
         <div>
-       <form onSubmit={handleSubmit}>
-         <input 
+       <form onSubmit={handleSubmit} className="my-5">
+         <input className="input"
         value={form.title}
         onChange={(e) => setForm({...form, title:e.target.value})}
         placeholder="Title"/>
 
-        <input 
+        <input className="input"
         value={form.author}
         onChange={(e) => setForm({...form, author: e.target.value})}
         placeholder="Author"
         />
 
-        <input 
+        <input  className="input"
         value={form.year}
         onChange={(e) => setForm({...form, year: e.target.value})}
         placeholder="Year"/>
 
-        <input 
+        <input  className="input text-red-500"
         value={form.genre}
         onChange={(e) => setForm({...form, genre: e.target.value})}
         placeholder="Genre"/>
 
-        <button type="submit">Add Book</button>
+        <button type="submit" className="btn">Add Book</button>
        </form>
         
         </div>
