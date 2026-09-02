@@ -41,3 +41,17 @@ It's a friday morning, maybe maybe not try context. We'll see how it goes.
 4. TypeScript :D
 5. Add auth to all other projects and maybe look at multi-oauth.
 6. Start planning out money tracker front and backend.
+
+
+
+
+### 09/1/26
+## Completed
+1. patch completed for dreams, books, games.
+
+
+## To-Do
+1. patch movies, find by id for whichevers left
+2. tailwind
+3. look at react conversion for other projects.
+

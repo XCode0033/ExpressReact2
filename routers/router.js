@@ -1,9 +1,9 @@
 import {Router} from 'express'
 import { getHomesController } from '../controllers/homeController.js';
-import { deleteGamesController, getGamesController, postGameController,findGameById } from '../controllers/gamesController.js';
+import { deleteGamesController, getGamesController, postGameController,findGameById, patchGame } from '../controllers/gamesController.js';
 import { deleteMoviesController, getMoviesController, postMoviesController, findMovieById } from '../controllers/moviesController.js';
-import { deleteDreamController, getDreamsController, postDreamController, findDreamById} from '../controllers/dreamsController.js';
-import { deleteBooks, getBooks, getBookById, postBooks } from '../controllers/bookController.js';
+import { deleteDreamController, getDreamsController, postDreamController, findDreamById, patchDream} from '../controllers/dreamsController.js';
+import { deleteBooks, getBooks, getBookById, postBooks, patchBook } from '../controllers/bookController.js';
 import { login, registerUser } from '../controllers/usersController.js';
 import {requireAuth} from '../middleware/verifyAuth.js'
 import passport from '../config/passport.js'
@@ -31,7 +31,11 @@ router.get('/me', requireAuth, (req, res) => {
     res.json({user: req.user}) 
 })
 
-
+// ----------------
+router.patch("/books/:id", requireAuth, patchBook)
+router.patch('/games/:id', requireAuth ,patchGame)
+router.patch('/dreams/:id', requireAuth, patchDream)
+// ----------------
 // ----------------
 router.get('/dreams/:id', findDreamById)
 router.get('/movies/:id', findMovieById)

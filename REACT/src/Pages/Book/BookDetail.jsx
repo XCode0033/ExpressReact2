@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-
+import BookEditField from "../../Components/Books/BookEditField";
 const BookDetail = () => {
   const { id } = useParams();          // "/books/3" -> id === "3"
   const [book, setBook] = useState(null);
@@ -27,13 +27,18 @@ const BookDetail = () => {
   if (error) return <p>{error}</p>;
   if (!book) return null;
 
+  const handleSaved = (updated) => setBook(updated)
   return (
     <>
       <Link to="/books">← Back to books</Link>
       <h1>{book.title}</h1>
-      <p>Author: {book.author}</p>
-      <p>Year: {book.year}</p>
-      <p>Genre: {book.genre}</p>
+     
+
+      <BookEditField label="Title" name='title' value={book.title} bookId={book.id} onSaved={handleSaved} />
+      <BookEditField label="Author" name='author' value={book.author} bookId={book.id} onSaved={handleSaved} />
+      <BookEditField label="Year" name='year' value={book.year} bookId={book.id} onSaved={handleSaved} />
+      <BookEditField label="Genre" name='genre' value={book.genre} bookId={book.id} onSaved={handleSaved} />
+
     </>
   );
 };

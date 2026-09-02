@@ -28,6 +28,36 @@ export const findDreamById = async(req, res) => {
     if(result.rowCount === 0) 'No dream found with this id'
     res.status(200).json({dream: result.rows[0]})
 }
+
+export const patchDream = async(req, res) => {
+    const { id } = req.params
+    const body = req.body ?? {};
+
+    const allowed = ['title', 'description', 'mood']
+
+    const fields = Object.keys(body).filter((k) => allowed.includes(k))
+
+    if(fields.length === 0) {
+        return res.status(404).json({error:'No dream found to target for update.'})
+    }
+
+    const setClause = fields.map((f, i) => `${f} =$${i + 1}`).join(', ');
+    const values = fields.map((f) => body[f])
+
+    const result = await query(`
+        UPDATE dreams
+        SET ${setClause} WHERE id = $${fields.length + 1}
+        RETURNING *
+        `, [...values, id])
+
+    if(result.rows.length === 0){
+       return res.status(404).json({message: 'No dream found when checked for update success.'})
+    }
+    res.status(200).json({dream: result.rows[0]})
+
+}
+
+
 export const deleteDreamController = async(req,res ) => {
    const { id } = req.params;
 
